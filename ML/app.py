@@ -29,7 +29,7 @@ def predict():
     # data = {
     #     'predictions': results.pandas().xyxy[0].to_dict(orient='records')
     # }
-    # print(results)
+    print(results)
     return jsonify("hello")
     # return jsonify(data)
 
