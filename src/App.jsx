@@ -1,10 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [url, setUrl] = useState(null);
+  function dataURLToBlob(dataURL) {
+    if (!dataURL) {
+      // Handle the case where dataURL is undefined
+      console.error("Data URL is undefined");
+      return null;
+    }
+
+    const base64Data = dataURL.split(",")[1];
+    const byteCharacters = atob(base64Data);
+    const byteArray = new Uint8Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteArray[i] = byteCharacters.charCodeAt(i);
+    }
+    return new Blob([byteArray], { type: "image/png" });
+  }
+
+  useEffect(() => {
+    const getCart = async () => {
+      let [tab] = await chrome.tabs.query({ active: true });
+      const result = await chrome.tabs.sendMessage(tab.id, {
+        type: "id",
+        id: Date.now().toString(),
+      });
+      setUrl(result);
+      console.log(typeof result, "jkshkjdah");
+    };
+    getCart();
+  });
 
   return (
     <>
@@ -17,6 +46,14 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      {url ? (
+        <>
+          {console.log(dataURLToBlob(url))}
+          <div>{url}</div>
+        </>
+      ) : (
+        ""
+      )}
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -29,7 +66,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
