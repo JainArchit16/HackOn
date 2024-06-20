@@ -1,0 +1,17 @@
+{
+    "name": "Amazon Hackon",
+    "description": "this is a chrome extension",
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "index.html"
+    },
+    "permissions": ["scripting", "activeTab", "notifications","tabs"],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["script.js"]
+      }
+    ]
+  }
+  
