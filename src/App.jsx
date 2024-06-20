@@ -7,20 +7,45 @@ function App() {
   const [count, setCount] = useState(0);
   const [url, setUrl] = useState(null);
   function dataURLToBlob(dataURL) {
-    if (!dataURL) {
-      // Handle the case where dataURL is undefined
-      console.error("Data URL is undefined");
-      return null;
-    }
-
     const base64Data = dataURL.split(",")[1];
     const byteCharacters = atob(base64Data);
-    const byteArray = new Uint8Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-      byteArray[i] = byteCharacters.charCodeAt(i);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+      const slice = byteCharacters.slice(offset, offset + 512);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
     }
-    return new Blob([byteArray], { type: "image/png" });
+
+    return new Blob(byteArrays, { type: "image/png" });
   }
+
+  function sendImageToServer(dataURL) {
+    const blob = dataURLToBlob(dataURL);
+    const formData = new FormData();
+
+    formData.append("image", blob, "screenshot.png");
+
+    fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response from server:", data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  // Example usage: Assume 'dataUrl' contains your data URL
 
   useEffect(() => {
     const getCart = async () => {
@@ -49,6 +74,7 @@ function App() {
       {url ? (
         <>
           {console.log(dataURLToBlob(url))}
+          {sendImageToServer(url)}
           <div>{url}</div>
         </>
       ) : (
