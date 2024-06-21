@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 from ultralytics import YOLO
 from PIL import Image
 import io
-import os
 
 app = Flask(__name__)
 
@@ -21,23 +20,26 @@ def predict():
     if file.filename == '':
         return jsonify({'error': 'No image provided'}), 400
 
-    # output_dir = './output/'
-    # if not os.path.exists(output_dir):
-    #     os.makedirs(output_dir)
-
-    # Open the image file
     img = Image.open(io.BytesIO(file.read()))
 
-    # Save the image to a file
-    # img.save(output_dir + 'output.png', format="PNG")
-    # Extract results (you might need to adjust this based on your model's output format)
-    # data = {
-    #     'predictions': results.pandas().xyxy[0].to_dict(orient='records')
-    # }
-    results=model(img,show="true")
-    print(results)
-    return jsonify("hello")
-    # return jsonify(data)
+    results=model(img)
+    detected_classes = []
+    detected_class_names = []
+
+    # Extract the detected classes from results
+    for result in results:
+        # Assuming result['class'] contains the class indices
+        class_indices = result.boxes.cls.cpu().numpy()  # Modify this line based on the actual structure
+        detected_classes.extend(class_indices)
+    
+    class_names = model.names
+
+    # Print detected class indices and their corresponding names
+    detected_class_names = [class_names[int(cls)] for cls in detected_classes]
+    print("Detected classes (indices):", detected_classes)
+    print("Detected class names:", detected_class_names)
+
+    return jsonify(detected_class_names)
 
 
 @app.route("/", methods=['GET'])

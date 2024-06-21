@@ -4,7 +4,7 @@ from ultralytics import YOLO
 model = YOLO("best.pt")
 
 # Define the source image and the save directory
-source_image = "IMG-20240619-WA0034.jpg"
+source_image = "WhatsApp Image 2024-06-17 at 19.10.56_4d2b3ac8.jpg"
 save_directory = "./new"
 
 # Perform the detection and save the results
