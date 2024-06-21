@@ -2,9 +2,9 @@
 
 This is an Extension that helps to detect objects on your window screen and provide links to purchase them on Amazon.
 
-# AmazoNext
+# AmazoNext 
 
-<img src="https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49" alt="Logo" width="200" height="100">
+<img src="https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49" alt="Logo" width="200" height="180">
 
 ## Purpose
 
