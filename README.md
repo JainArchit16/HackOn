@@ -4,7 +4,7 @@ This is an Extension that helps to detect objects on your window screen and prov
 
 # AmazoNext
 
-![Logo](https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49){:width="200px" height="100px"}
+<img src="https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49" alt="Logo" width="200" height="100">
 
 ## Purpose
 
