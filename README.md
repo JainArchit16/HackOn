@@ -4,7 +4,7 @@ This is an Extension that helps to detect objects on your window screen and prov
 
 # AmazoNext
 
-![Logo](https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49)
+![Logo](https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49){:width="200px" height="100px"}
 
 ## Purpose
 
@@ -41,7 +41,7 @@ npm run build
 6. Enable "Developer mode."
 7. Click "Load unpacked" and select the "dist" folder in your extension directory.
 
-![](.github/extension_unpack.png)
+![image](https://github.com/JainArchit16/HackOn/assets/146457258/5dcd5f88-95f6-49d5-bbd7-ebaf34b67416)
 
 This will load the extension on your browser
 
