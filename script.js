@@ -1,4 +1,4 @@
-console.log("bitch");
+console.log("hello");
 // chrome.runtime.onMessage.addListener((data, sender, sendResponse) => {
 //   console.log("in thereeeeeeee");
 //   if (data.type === "id") {

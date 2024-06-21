@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { useState } from "react";
 import "./App.css";
+import logo from "./assets/Logo.png";
+import { ScaleLoader } from "react-spinners";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState(null);
   function dataURLToBlob(dataURL) {
     const base64Data = dataURL.split(",")[1];
@@ -27,35 +27,31 @@ function App() {
   }
 
   function sendImageToServer(dataURL) {
-    const blob = dataURLToBlob(dataURL);
-    const formData = new FormData();
+    try {
+      const blob = dataURLToBlob(dataURL);
+      const formData = new FormData();
 
-    formData.append("image", blob, "screenshot.png");
+      formData.append("image", blob, "screenshot.png");
 
-    fetch("http://127.0.0.1:5000/predict", {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Response from server:", data);
+      fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        body: formData,
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Response from server:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
-  // Example usage: Assume 'dataUrl' contains your data URL
-
-  // useEffect(() => {
-
-  // });
   const getScreenshot = async () => {
-    // let [tab] = await chrome.tabs.query({ active: true });
-    // const result = await chrome.tabs.sendMessage(tab.id, {
-    //   type: "id",
-    //   id: Date.now().toString(),
-    // });
+    setLoading(true);
     chrome.runtime.sendMessage(
       { type: "id", id: Date.now().toString() },
       function (response) {
@@ -69,38 +65,29 @@ function App() {
   };
   // getCart();
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex flex-col justify-center items-center">
+      <div className="mb-6">
+        <p className="text-xl mb-4">AmazoNext</p>
+        <img src={logo} className="h-32 w-32 rounded-full" />
       </div>
-      <h1>Vite + React</h1>
       <button onClick={() => getScreenshot()}>Take screenshot</button>
       {url ? (
-        <>
-          {console.log(dataURLToBlob(url))}
-          {sendImageToServer(url)}
-          <div>{url}</div>
-        </>
+        <div>
+          {/* {console.log(dataURLToBlob(url))} */}
+          {/* {sendImageToServer(url)} */}
+          {/* {url} */}
+          {/* <img src={url} /> */}
+          {/* <div>{dataURLToBlob(url)}</div> */}
+
+          <p className="my-3">Captured Image</p>
+          <img src={url} className="h-40 w-64 my-4" />
+          {loading && <ScaleLoader color="#ffffff" />}
+          {!loading && <p className="font-semibold text-lg"> Results:-</p>}
+        </div>
       ) : (
         ""
       )}
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   );
 }
 
