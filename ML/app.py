@@ -21,20 +21,21 @@ def predict():
     if file.filename == '':
         return jsonify({'error': 'No image provided'}), 400
 
-    output_dir = './output/'
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    # output_dir = './output/'
+    # if not os.path.exists(output_dir):
+    #     os.makedirs(output_dir)
 
     # Open the image file
     img = Image.open(io.BytesIO(file.read()))
 
     # Save the image to a file
-    img.save(output_dir + 'output.png', format="PNG")
+    # img.save(output_dir + 'output.png', format="PNG")
     # Extract results (you might need to adjust this based on your model's output format)
     # data = {
     #     'predictions': results.pandas().xyxy[0].to_dict(orient='records')
     # }
-    # print(results)
+    results=model(img,show="true")
+    print(results)
     return jsonify("hello")
     # return jsonify(data)
 
