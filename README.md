@@ -4,6 +4,8 @@ This is an Extension that helps to detect objects on your window screen and prov
 
 # AmazoNext
 
+![Logo](https://github.com/JainArchit16/HackOn/assets/146457258/998f4bd9-6189-4897-910f-918bff888d49)
+
 ## Purpose
 
 This repository features a Browser Extension that detects objects on your window screen and provide links to purchase them.
