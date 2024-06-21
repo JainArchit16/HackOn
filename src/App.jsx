@@ -47,19 +47,27 @@ function App() {
 
   // Example usage: Assume 'dataUrl' contains your data URL
 
-  useEffect(() => {
-    const getCart = async () => {
-      let [tab] = await chrome.tabs.query({ active: true });
-      const result = await chrome.tabs.sendMessage(tab.id, {
-        type: "id",
-        id: Date.now().toString(),
-      });
-      setUrl(result);
-      console.log(typeof result, "jkshkjdah");
-    };
-    getCart();
-  });
+  // useEffect(() => {
 
+  // });
+  const getScreenshot = async () => {
+    // let [tab] = await chrome.tabs.query({ active: true });
+    // const result = await chrome.tabs.sendMessage(tab.id, {
+    //   type: "id",
+    //   id: Date.now().toString(),
+    // });
+    chrome.runtime.sendMessage(
+      { type: "id", id: Date.now().toString() },
+      function (response) {
+        console.log("Response from background:", response);
+        setUrl(response);
+        // sendResponse(response);
+      }
+    );
+    // setUrl(result);
+    console.log(typeof result, "jkshkjdah");
+  };
+  // getCart();
   return (
     <>
       <div>
@@ -71,6 +79,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <button onClick={() => getScreenshot()}>Take screenshot</button>
       {url ? (
         <>
           {console.log(dataURLToBlob(url))}
