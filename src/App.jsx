@@ -49,7 +49,7 @@ function App() {
         method: "POST",
         body: formData,
       });
-
+      console.log(response);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -95,8 +95,8 @@ function App() {
             <div>
               <p className="font-semibold text-lg">Results:</p>
               <ul>
-                {predictions?.map((index, result) => (
-                  <li key={index}>{console.log(typeof result)}</li>
+                {predictions?.map((result, index) => (
+                  <li key={index}>{result}</li>
                 ))}
               </ul>
             </div>
