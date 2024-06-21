@@ -14,10 +14,6 @@ function App() {
     }
   }, [url]);
 
-  useEffect(() => {
-    console.log(predictions, "mkc");
-  }, [predictions]);
-
   function dataURLToBlob(dataURL) {
     const base64Data = dataURL.split(",")[1];
     const byteCharacters = atob(base64Data);
@@ -55,9 +51,10 @@ function App() {
       }
 
       const data = await response.json();
-      setPredictions(data);
+      const uniqueData = Array.from(new Set(data));
+      setPredictions(uniqueData);
 
-      console.log(predictions);
+      console.log(uniqueData);
       console.log(data, "hello");
       console.log(typeof data);
     } catch (error) {
@@ -92,11 +89,18 @@ function App() {
           {loading ? (
             <ScaleLoader color="#ffffff" />
           ) : (
-            <div>
-              <p className="font-semibold text-lg">Results:</p>
-              <ul>
+            <div className="w-full">
+              <p className="font-semibold text-lg w-full">Results:</p>
+              <ul className="w-full">
                 {predictions?.map((result, index) => (
-                  <li key={index}>{result}</li>
+                  <li key={index} className="text-md my-2 w-full">
+                    <a
+                      href={`https://www.amazon.in/s?k=${result}&ref=nb_sb_noss`}
+                      target="_blank"
+                    >
+                      {`https://www.amazon.in/s?k=${result}&ref=nb_sb_noss`}
+                    </a>
+                  </li>
                 ))}
               </ul>
             </div>
