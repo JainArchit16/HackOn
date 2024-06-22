@@ -45,6 +45,7 @@ npm run build
 
 This will load the extension on your browser
 
+![image](https://github.com/JainArchit16/HackOn/assets/146457258/b474b20d-780e-49dd-b830-a0e257840c15)
 
 
 ## Features
