@@ -50,10 +50,10 @@ This will load the extension on your browser
 
 ## Features
 - *Screenshot Capture*: Easily capture a screenshot of any product within an image on your browser.
-  ![image](https://github.com/JainArchit16/HackOn/assets/146457258/455c629e-ceec-4d3a-81a9-4d2517bc4a28)
+  ![image](https://github.com/JainArchit16/HackOn/assets/146457258/6eb164a9-d3d1-4772-9d91-8ba33826bd91)
   
 - *Amazon Link Retrieval*: Automatically get Amazon links for the identified product or similar items.
-  ![image](https://github.com/JainArchit16/HackOn/assets/146457258/8aae65a3-13cd-47a8-a6a0-37d6c05d7dc4)
+  ![image](https://github.com/JainArchit16/HackOn/assets/146457258/272b8965-4d98-4ce6-a04a-48d3b7500400)
   
 - *Customization*: Fine-tune the detected product details for more precise results.
 - *User-Friendly Interface*: Intuitive and straightforward interface for seamless user experience.
