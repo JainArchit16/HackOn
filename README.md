@@ -1,6 +1,6 @@
-# React + ViteJS
+# Overview
 
-This is an Extension that helps to detect objects on your window screen and provide links to purchase them on Amazon.
+This project is a browser extension designed to enhance your online shopping experience. With just a few clicks, you can take a screenshot of any product you see in an image, and our extension will provide you with a direct Amazon link for the same or a similar product. Additionally, users have the option to customize the identified object for more accurate results.
 
 # AmazoNext 
 
@@ -45,8 +45,7 @@ npm run build
 
 This will load the extension on your browser
 
-## Overview
-This project is a browser extension designed to enhance your online shopping experience. With just a few clicks, you can take a screenshot of any product you see in an image, and our extension will provide you with a direct Amazon link for the same or a similar product. Additionally, users have the option to customize the identified object for more accurate results.
+
 
 ## Features
 - *Screenshot Capture*: Easily capture a screenshot of any product within an image on your browser.
