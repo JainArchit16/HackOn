@@ -19,7 +19,7 @@ This repository features a Browser Extension that detects objects on your window
 git clone https://github.com/JainArchit16/HackOn
 ```
 
-2. Change your directory to Ruse-Reveal
+2. Change your directory to HackOn
 
 ```sh
 cd HackOn
@@ -47,7 +47,7 @@ This will load the extension on your browser
 
 ![image](https://github.com/JainArchit16/HackOn/assets/146457258/b474b20d-780e-49dd-b830-a0e257840c15)
 
-8. Now Run the Backend Flask Server for Model to return responses
+8. Now Run the Backend Flask Server for Model to return responses, Change your directory to HackOn.
 
 ```sh
 cd ML
@@ -62,9 +62,11 @@ python app.py
 
 ## Features
 - *Screenshot Capture*: Easily capture a screenshot of any product within an image on your browser.
+  
   ![image](https://github.com/JainArchit16/HackOn/assets/146457258/6eb164a9-d3d1-4772-9d91-8ba33826bd91)
   
 - *Amazon Link Retrieval*: Automatically get Amazon links for the identified product or similar items.
+  
   ![image](https://github.com/JainArchit16/HackOn/assets/146457258/272b8965-4d98-4ce6-a04a-48d3b7500400)
   
 - *Customization*: Fine-tune the detected product details for more precise results.
