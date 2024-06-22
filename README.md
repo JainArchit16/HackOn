@@ -47,6 +47,18 @@ This will load the extension on your browser
 
 ![image](https://github.com/JainArchit16/HackOn/assets/146457258/b474b20d-780e-49dd-b830-a0e257840c15)
 
+8. Now Run the Backend Flask Server for Model to return responses
+
+```sh
+cd ML
+```
+9. Now run the app.py file
+
+```sh
+python app.py 
+``` 
+
+10. Now we can use our extension successfully.
 
 ## Features
 - *Screenshot Capture*: Easily capture a screenshot of any product within an image on your browser.
